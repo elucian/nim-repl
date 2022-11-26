@@ -2,17 +2,15 @@
   Main application in REPL app
   Display a menu and options
 ]#
+  
+# external modules
 import std/terminal
 import std/strutils
-  
-echo "Nim REPL demo!"
 
-# display the main menu
-proc menu(): string {.discardable.} =
-    echo "--------------"
-    echo " 0) exit"
-    echo " 1) clear console"
-    echo " 2) hello world"
+# external files
+include menu
+include hello
+include integer
 
 proc clear(): string {.discardable.} =
     eraseScreen()
@@ -33,19 +31,12 @@ var op = option()
 while op != 0:
   # option selection 
   case op
-    of 1:
-      clear(); menu()
-    of 2:
-      echo "Hello World"
-    of 3:
-      echo op
+    of 1: clear(); menu()
+    of 2: discard hello_world()
+    of 3: echo op
+    of 4: discard integer_demo()
     else:
       echo "not implemented"
   # read next option
   op = option()
-# end while
-
 echo "done"
-
-
-

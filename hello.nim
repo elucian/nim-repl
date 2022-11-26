@@ -6,4 +6,5 @@
   in Python. This is original to Nim.
 ]#
 
-echo "hello world"
+proc hello_world: string =
+  echo "hello world"
